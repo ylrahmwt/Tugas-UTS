@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Yulia Rahmawati</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #f0f5ff; 
+            color: #2b303a;
+        }
+        
+        p {
+            text-align: justify;
+        }
+
+        section {
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+        }
+
+        @media (max-width: 767px) {
+            section {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+
+        .navbar {
+            background-color: rgba(13, 110, 253, 0.95) !important;
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        .nav-link {
+            font-weight: 500;
+            margin: 0 5px;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #ffc107 !important;
+        }
+        
+        @media (max-width: 991px) {
+            .offcanvas-body {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center; 
+                align-items: flex-start !important; 
+                padding-left: 2.5rem !important;   
+                height: 70vh;
+            }
+            .navbar-nav {
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100% !important;
+                text-align: left !important;/
+            }
+            .nav-item {
+                width: 100% !important;
+                text-align: left !important;
+            }
+            .nav-link {
+                font-size: 1.4rem !important; 
+                padding: 15px 0 !important;
+                display: block !important;
+                width: 100% !important;
+                color: #ffffff !important; 
+            }
+        }
+        
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0d6efd;
+            line-height: 1.2;
+        }
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        .img-profile {
+            width: 100%;
+            max-width: 250px; 
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(13, 110, 253, 0.15);
+            padding: 6px; 
+            background: linear-gradient(135deg, #dc3545 0%, #0d6efd 100%);
+        }
+
+        .bg-white-section {
+            background-color: #ffffff;
+            border-radius: 35px;
+            margin: 0 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.01);
+        }
+        .section-title {
+            font-weight: 700;
+            color: #0d6efd;
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 768px) {
+            .section-title {
+                margin-bottom: 3rem;
+            }
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(13, 110, 253, 0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+            height: 100%;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(13, 110, 253, 0.12);
+        }
+        
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; 
+            object-position: top;
+        }
+        @media (min-width: 768px) {
+            .card-img-top {
+                height: 280px;
+            }
+        }
+
+        .hero-card {
+            border: none !important; 
+            padding: 4px; 
+            background: linear-gradient(135deg, #dc3545 0%, #0d6efd 100%) !important; 
+            transition: transform 0.3s ease;
+            border-radius: 15px; 
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+        }
+        .hero-card:hover {
+            transform: scale(1.05);
+        }
+
+        .img-spider-responsive {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1 / 1; 
+            object-fit: cover;   
+            object-position: top center; 
+            border-radius: 12px;
+            display: block;
+        }
+
+        .contact-box {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(13, 110, 253, 0.06);
+            transition: transform 0.3s;
+        }
+        @media (min-width: 768px) {
+            .contact-box {
+                padding: 2.5rem;
+            }
+        }
+        .contact-box:hover {
+            transform: scale(1.02);
+        }
+        .contact-icon {
+            font-size: 2.5rem;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: #0d6efd;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            padding: 2rem 0;
+        }
+        
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .slide-right {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        @media (min-width: 768px) {
+            .slide-left { transform: translateX(-50px); transition: all 1s; }
+            .slide-right { transform: translateX(50px); transition: all 1s; }
+        }
+        
+        .slide-up {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .slide-active {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+    </style>
+</head>
+<body id="home">
+
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" style="background-color: rgba(13, 110, 253, 0.98) !important; backdrop-filter: blur(10px); padding-top: 5px; padding-bottom: 5px;">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-6" href="#home">Yulia R.</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="padding: 3px 6px; font-size: 0.8rem;">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center text-center gap-0 pt-1 pb-1 py-lg-0 fs-6" style="margin-bottom: 0;">
+        <li class="nav-item w-100"><a class="nav-link text-white fw-medium py-1" href="#home">Home</a></li>
+        <li class="nav-item w-100"><a class="nav-link text-white fw-medium py-1" href="#about">About</a></li>
+        <li class="nav-item w-100"><a class="nav-link text-white fw-medium py-1" href="#projects">Projects</a></li>
+        <li class="nav-item w-100"><a class="nav-link text-white fw-medium py-1" href="#hero">Favorite Hero</a></li>
+        <li class="nav-item w-100"><a class="nav-link text-white fw-medium py-1" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <section class="container" style="padding-top:10rem;">
+      <div class="row overflow-hidden align-items-center justify-content-center flex-column-reverse flex-md-row g-5">
+        <div class="col-md-6 text-center text-md-start slide-left">
+          <h1 class="hero-title">Hi..Saya Yulia Rahmawati</h1>
+          <p class="text-secondary mt-2 fs-4" style="text-align: inherit;">Mahasiswa Pendidikan Informatika</p>
+          <p class="text-muted mt-3 fs-5">Saat ini saya masih terus belajar dan mengeksplorasi dunia web development. Di sini Anda bisa melihat beberapa proyek sederhana hasil proses belajar saya!</p>
+        </div>
+        <div class="col-md-5 text-center slide-right">
+          <img src="foto-profil.jpeg" alt="Yulia" class="img-profile shadow">
+        </div>
+      </div>
+    </section>
+    
+    <section id="about">
+      <div class="bg-white-section text-center slide-up">
+        <h2 class="section-title"><i class="bi bi-person-fill"></i> About Me</h2>
+    
+        <div class="row justify-content-center align-items-stretch mt-3 g-3 g-lg-4 text-start">
+          <div class="col-12 col-lg-6 fs-6 fs-lg-5 text-secondary lh-lg border-lg-end border-light pe-lg-4 d-flex flex-column justify-content-center">
+            <p class="mb-2 mb-lg-3">Saya adalah salah satu mahasiswi aktif program studi <strong class="text-primary">Pendidikan Informatika di Universitas Hamzanwadi</strong>. Di kampus, saya sedang mendalami dunia koding, mendesain tampilan web, hingga membangun aplikasi edukasi.</p>
+            <p class="mb-0">Bagi saya, dunia IT itu menantang namun membuat penasaran, karena itu saat ini saya fokus untuk terus mengasah keterampilan lewat setiap tugas kuliah dan proyek pribadi!</p>
+          </div>
+          
+          <div class="col-12 col-lg-5 ps-lg-4 d-flex flex-column justify-content-between gap-2 gap-lg-3">
+            <div class="p-3 rounded-4 flex-grow-1" style="background-color: #f8faff; border-left: 5px solid #0d6efd;">
+              <h6 class="fw-bold text-dark mb-1 mb-lg-2"><i class="bi bi-controller text-primary me-2"></i> Fakta Menarik #1: Gamer</h6>
+              <p class="text-muted small lh-base mb-0" style="font-size: 0.85rem;">Selain berkutat dengan logika koding, saya memiliki hobi bermain game! Bagi saya, ini adalah cara paling ampuh untuk menyegarkan pikiran dan mengembalikan fokus setelah menyelesaikan proyek pemrograman.</p>
+            </div>
+            <div class="p-3 rounded-4 flex-grow-1" style="background-color: #fffdf6; border-left: 5px solid #ffc107;">
+              <h6 class="fw-bold text-dark mb-1 mb-lg-2"><i class="bi bi-clouds-fill text-warning me-2"></i> Fakta Menarik #2: Sky Lover</h6>
+              <p class="text-muted small lh-base mb-0" style="font-size: 0.85rem;">Saya juga sangat gemar mengambil foto pemandangan langit! Menangkap momen keindahan langit dan awan memberikan ketenangan tersendiri sekaligus melatih sisi kreativitas saya.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col">
+            <h2 class="section-title slide-up"><i class="bi bi-code-slash"></i> My Projects</h2>
+          </div>
+        </div>
+        <div class="row overflow-hidden justify-content-center g-4">
+          <div class="col-md-5 slide-left">
+            <div class="card p-2">
+              <div class="card-body">
+                <div class="text-primary fs-3 mb-2"><i class="bi bi-controller"></i></div>
+                <h5 class="card-title fw-bold fs-4">Animal Fun</h5>
+                <p class="card-text text-secondary">Aplikasi edukasi interaktif pengenalan nama hewan untuk anak-anak menggunakan ActionScript 3.0.</p>
+                <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">ActionScript 3.0</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 slide-right">
+            <div class="card p-2">
+              <div class="card-body">
+                <div class="text-primary fs-3 mb-2"><i class="bi bi-wallet2"></i></div>
+                <h5 class="card-title fw-bold fs-4">Riwayat Tabunganku</h5>
+                <p class="card-text text-secondary">Website sederhana untuk mencatat dan memantau riwayat tabungan pribadi agar manajemen keuangan lebih teratur, dibangun menggunakan PHP dan MySQL.</p>
+                <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">PHP</span>
+                <span class="badge bg-info-subtle text-info rounded-pill px-3 py-2 ms-1">MySQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hero" class="bg-white-section">
+        <div class="container text-center">
+            <h2 class="section-title slide-up"><i class="bi bi-star-fill text-danger"></i> My Favorite Hero</h2>
+            <div class="row justify-content-center mb-5 slide-up">
+                <div class="col-md-8">
+                    <h3 class="fw-bold text-dark">Spider-Man: <span class="text-danger">Across the Universe</span></h3>
+                    <p class="fst-italic text-secondary mt-2" style="text-align: center;">"With great power comes great responsibility."</p>
+                    <p class="text-secondary mt-3 fs-5">Bagi saya, perjalanan Peter Parker itu mirip sekali dengan proses belajar informatika. Karakter Spider-Man selalu memotivasi saya untuk terus melangkah maju melewati rumitnya tantangan dunia pemrograman!</p>
+                </div>
+            </div>
+            
+            <div class="row overflow-hidden g-2 g-md-4 justify-content-center slide-up">
+                <div class="col-6 col-md-4"><div class="card hero-card"><img src="S1.jpeg" class="img-spider-responsive" alt="S1"></div></div>
+                <div class="col-6 col-md-4"><div class="card hero-card"><img src="S2.jpeg" class="img-spider-responsive" alt="S2"></div></div>
+                <div class="col-6 col-md-4"><div class="card hero-card"><img src="S3.jpeg" class="img-spider-responsive" alt="S3"></div></div>
+                <div class="col-6 col-md-4"><div class="card hero-card"><img src="S11.jpeg" class="img-spider-responsive" alt="S11"></div></div>
+                <div class="col-6 col-md-4"><div class="card hero-card"><img src="S22.jpeg" class="img-spider-responsive" alt="S22"></div></div>
+                <div class="col-6 col-md-4"><div class="card hero-card"><img src="S33.jpeg" class="img-spider-responsive" alt="S33"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="pb-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col">
+                    <h2 class="section-title slide-up"><i class="bi bi-envelope-heart"></i> Hubungi Saya: </h2>
+                </div>
+            </div>
+            <div class="row overflow-hidden justify-content-center g-4 text-center mt-2">
+                <div class="col-md-4 slide-left">
+                    <div class="contact-box">
+                        <div class="contact-icon"><i class="bi bi-envelope-fill text-primary"></i></div>
+                        <h5 class="fw-bold">Email</h5>
+                        <p class="text-secondary" style="text-align: center;">ylarhmwt352@gmail.com</p>
+                    </div>
+                </div>
+                <div class="col-md-4 slide-right">
+                    <div class="contact-box">
+                        <div class="contact-icon"><i class="bi bi-whatsapp text-success"></i></div>
+                        <h5 class="fw-bold">WhatsApp / Phone</h5>
+                        <p class="text-secondary" style="text-align: center;">+62 878-7991-0502</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-white text-center">
+        <div class="container">
+            <p class="mb-0 small" style="text-align: center;">&copy; 2026 Yulia Rahmawati. </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+   <script>
+        const animatedElements = document.querySelectorAll('.slide-left, .slide-right, .slide-up');
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('slide-active');
+                } else {
+                    entry.target.classList.remove('slide-active');
+                }
+            });
+        }, {
+            threshold: 0.1, 
+            rootMargin: "0px 0px -30px 0px" 
+        });
+
+        animatedElements.forEach(el => {
+            scrollObserver.observe(el);
+        });
+    </script>
+
+</body>
+</html>
